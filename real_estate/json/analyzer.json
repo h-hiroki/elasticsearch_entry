@@ -1,0 +1,33 @@
+{
+    "settings": {
+        "index": {
+            "analysis": {
+                "tokenizer": {
+                    "kuromoji_user_dict": {
+                        "type": "kuromoji_tokenizer",
+                        "mode": "extended",
+                        "discard_punctuation": "false"
+                    }
+                },
+                "analyzer": {
+                    "ja_analyzer": {
+                        "type": "custom",
+                        "tokenizer": "kuromoji_user_dict"
+                    }
+                }
+            }
+        }
+    },
+    "mappings": {
+        "properties": {
+            "description": {
+                "type": "text",
+                "analyzer": "ja_analyzer"
+            },
+            "address": {
+                "type": "text",
+                "analyzer": "ja_analyzer"
+            }
+        }
+    }
+}

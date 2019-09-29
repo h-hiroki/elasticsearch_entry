@@ -115,3 +115,19 @@ curl -X POST -H "Content-Type: application/json" http://localhost:9200/houses/_s
 ```
 curl -X POST -H "Content-Type: application/json" http://localhost:9200/houses/_search\?pretty -d '{"query": {"range": {"stations.minute_on_foot": {"lte": 2}}}}'
 ```
+
+## 日本語を形態素解析で正しく扱えるようにする
+参考: https://www.elastic.co/guide/en/elasticsearch/plugins/current/analysis-kuromoji-tokenizer.html
+
+
+まずはhousesを消す
+```
+curl -X DELETE http://localhost:9200/houses/
+```
+
+setting,mappingを定義したjsonを読み込ませる
+```
+curl -X PUT -H "Content-Type: application/json" -d @real_estate/json/analyzer.json http://localhost:9200/houses/\?pretty
+```
+
+その後、またdocumentを登録して、検索する
