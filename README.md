@@ -3,13 +3,12 @@ elasticsearch入門+を7.3.2で行う
 
 # コマンドライン操作メモ
 
-起動している事を確認する
+### 起動している事を確認する
 ```
-curl http://localhost:9200
-```
-
-インストールされているプラグインを確認する
-```
-curl http://localhost:9200/_nodes/plugins\?pretty
+curl -X GET http://localhost:9200
 ```
 
+### インストールされているプラグインを確認する
+```
+curl -X GET http://localhost:9200/_nodes/plugins\?pretty
+```
